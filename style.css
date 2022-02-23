@@ -1,0 +1,35 @@
+body{
+  background-color: lightgray;
+  width:100vw;
+  dis
+
+}
+
+.flex{
+  display:flex;
+  justify-content: center;
+
+}
+
+.outputFieldParent{
+  width:90%;
+  background-color:yellow;
+  height: min-content;
+  justify-content: space-between;
+  /* padding: 0 1%; */
+  
+
+}
+
+.outputStyling{
+  margin: 5px 0;
+
+}
+
+.outputRemovalButton{
+  padding:0;
+  margin:0;
+  border:0;
+  background-color: orange;
+
+}
