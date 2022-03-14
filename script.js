@@ -16,8 +16,6 @@ function createNewList () {
   //creates a button element and assigns it to listTaskInput variable
   const listTaskInputButton = document.createElement("button");
   //creates a button element and assigns it to listTaskInputButton variable
-
-  
   listTitle.innerHTML = listTextInput;
   //assigns listTextInput value to the innerHTML of listTitle
   listTaskInputButton.innerHTML = "Add Task";
@@ -43,11 +41,15 @@ function createNewTask (listTaskInput, taskContainer) {
   const taskTitle = document.createElement("h4");
   taskTitle.innerHTML = taskValue;
   taskContainer.appendChild(taskTitle);
-  const strikeThroughClass = document.getElementById("eventID");
-  strikeThroughClass.classList.add("eventClass");
-//I need to 2 things in this function
-// 1: give the task the title value  ie ketchup or bread etc...
-// 2: I need to put that in the actual task list (listTaskContainer)
+  taskTitle.addEventListener('click', strikeThrough);
+
 }
 
 
+function strikeThrough (event) {
+  if (event.target.classList.contains("strike-through-class")  ) {
+    event.target.classList.remove('strike-through-class');
+  } else {
+  event.target.classList.add("strike-through-class");}
+  
+}
