@@ -32,17 +32,35 @@ function createNewList () {
   //adds child listTaskContainer to parent listDiv
   listContainer.appendChild(listDiv);
   //adds child listDiv to parent listContainer
+
+  localStorage.setItem(listTitle, listTitle.innerHTML);
+  const storageTest = localStorage.getItem(listTitle);
+  console.log(storageTest);
 }
 
 
-
 function createNewTask (listTaskInput, taskContainer) {
-  const taskValue = listTaskInput.value;
+  let taskValue = listTaskInput.value;
   const taskTitle = document.createElement("h4");
+  const taskDelete = document.createElement("button");
+  const taskEditInput = document.createElement("input");
   taskTitle.innerHTML = taskValue;
+  taskDelete.innerHTML = "X";
+  taskEditInput.placeholder = "Edit Task";
   taskContainer.appendChild(taskTitle);
+  taskContainer.appendChild(taskDelete);
+  taskContainer.appendChild(taskEditInput);
+  taskContainer.setAttribute("id", "task-container-delete")
+  taskDelete.setAttribute("id", "task-delete-id");
+  taskTitle.setAttribute('id', 'values');
+  taskEditInput.setAttribute('id', 'task-edit-input');
+  taskDelete.addEventListener('click', deleteParent);
   taskTitle.addEventListener('click', strikeThrough);
+  taskEditInput.addEventListener('input', updateTask);
 
+  localStorage.setItem(taskTitle, taskTitle.innerHTML);
+  const storageTest = localStorage.getItem(taskTitle);
+  console.log(storageTest);
 }
 
 
@@ -53,3 +71,20 @@ function strikeThrough (event) {
   event.target.classList.add("strike-through-class");}
   
 }
+
+
+function deleteParent() {
+  document.getElementById('task-delete-id').remove();
+  document.getElementById('task-edit-input').remove();
+  document.getElementById('values').remove();
+
+}
+
+
+function updateTask(e) {
+  const log = document.getElementById('values');
+  log.textContent = e.target.value;
+}
+
+
+
